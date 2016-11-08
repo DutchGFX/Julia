@@ -6,13 +6,13 @@ close all
 
 %% Constants
 powerN = 6;
-iters = 70;
+iters = 50;
 xcen = 0;
 ycen = 0;
-points = 200;
+points = 2000;
 cStep = .1;
 d=1;
-folder = 'N=6 Low Res';
+folder = 'N=6 High Res';
 %% Function
 for cReal=-1:cStep:1
     for cImag=-1:cStep:1
