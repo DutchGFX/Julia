@@ -1,11 +1,11 @@
-function [] = plotNewton(kGrid, powerN, c, colors)
+function [] = plotNewton(kGrid, powerN, c, iters, colors)
 %
 %
 
-figure1 = figure('Name','Julia Sets','NumberTitle','off');
+fig = figure('Name','Julia Sets','NumberTitle','off');
 imagesc([-4 4],[-4 4],kGrid)
-colormap(colors) % parula,jet,hsv,hot,cool,spring,summer,autumn,winter,gray,bone,copper,pink,lines,colorcube,prism,flag
-titlee = sprintf('Newton Fractl of $Z^%g+C$ for $C = %.4f + %.4fi$',powerN,real(c),imag(c));
+colormap(fig,colors) % parula,jet,hsv,hot,cool,spring,summer,autumn,winter,gray,bone,copper,pink,lines,colorcube,prism,flag
+titlee = sprintf('Newton Fractal of $Z^%g+C$ for $C = %.4f + %.4fi$ for %d iterations',powerN,real(c),imag(c),iters);
 title(titlee,'Interpreter','latex')
 colorbar;
 axis equal
