@@ -16,7 +16,7 @@ z = x+1i.*y;
 %% set Newton's method parameters
 
 powerN = 4;      % polynomial degree
-iters = 20;      % use ~10-20 for iterMapping, and >35ish for rootMapping
+iters = 40;      % use ~10-20 for iterMapping, and >35ish for rootMapping
 tol = 10^(-6);   % tolerance for convergence
 a = 1 + 0.4i;    % scaling constant for relaxation 0(stable inside disk of r=1, centered at 1)
 c = -1.0 + 0.0i;    % constant term in polynomial
@@ -29,8 +29,9 @@ c = -1.0 + 0.0i;    % constant term in polynomial
 %% plotting
 % parula,jet,hsv,hot,cool,spring,summer,autumn,winter,gray,bone,copper,pink,lines,colorcube,prism,flag
 
-type = 'iterMap';
+%type = 'iterMap';
 %type = 'rootMap';
+type = 'both';
 
 colors = max(iterMap(:));
 

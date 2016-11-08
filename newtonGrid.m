@@ -16,6 +16,7 @@ dfunc = @(v) powerN * v.^(powerN-1);
 poly = zeros(1,powerN+1);
 poly(1) = 1; poly(end) = c;
 rts = roots(poly);
+tempz = z;
 
 %% rootMapping
 
@@ -32,6 +33,7 @@ end
 
 %% iterMapping
 
+z = tempz;
 iterMap = zeros(size(z)); % # iterations for convergence
 figure;
 hold on;
@@ -44,7 +46,7 @@ for iter = 1:iters
     z(converged) = NaN;
     iterMap(converged) = iter;
     converged = converged .* 0;
-    
+    % real time plotting
     imagesc([-4 4],[-4 4], iterMap);
     colormap(colors);
     axis equal;
