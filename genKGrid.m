@@ -19,10 +19,10 @@ kGrid = zeros(size(x)); % will store k values: dark not diverging
 %% Calculations
 z = x+1i.*y;
 for iter=0:iters
-    z=func(z); % next iteration
     escaped = abs(z)>escapeRadius; % particles that left the circle this iter
     z(escaped) = NaN; % prevent further iterations
-    kGrid(escaped) = iter;
+    kGrid(escaped) = iter; 
+    z=func(z); % next iteration
 end
 
 end
