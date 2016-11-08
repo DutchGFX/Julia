@@ -10,11 +10,11 @@ myGoodCValues6 = [(.9+(-.2)*1i) (.742+(-.11)*1i) (.755+(-.11)*1i) (.7+(-.09)*1i)
 myGoodCValues9 = [0 ((pi/8)+(pi/4)*1i) (.5-2*1i)];
 
 powerN = 6;
-iters = 100;
+iters = 70;
 xcen = 0;
 ycen = 0;
 points = 2000;
-d=2;
+d=1;
 
 %% Function
 theseC = eval((sprintf('myGoodCValues%g',powerN)));
@@ -34,8 +34,7 @@ for iter=0:iters %changed to denote particles that are already escaped
     z=func(z); % next iteration
     escaped = abs(z)>escapeRadius; % particles that left the circle this iter
     z(escaped) = NaN; % prevent further iterations
-    kGrid(escaped) = iter;
-    
+    kGrid(escaped) = iter;    
 end
 
 %% Plotting
