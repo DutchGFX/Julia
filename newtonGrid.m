@@ -6,7 +6,9 @@ function [rootMap, iterMap] = newtonGrid(powerN, c, iters, z, a, tol)
 %             z - grid in complex plane to iterate on
 %             a - scaling constant for relaxed Newton's method
 %             tol - tolerance to consider a point converged
-% returns: kGrid - maps each point in z to the root to which it converges 
+% returns: rootMap - maps each point in z to the root to which it converges
+%          iterMap - maps eaceh point in z to the # of iterations for
+%          convergence
 
 rootMap = zeros(size(z)); % initialize kGrid
 
@@ -18,6 +20,10 @@ poly(1) = 1; poly(end) = c;
 rts = roots(poly);
 tempz = z;
 
+% possible implementation for general polynomials 
+%func = @(v) polyval(poly,v);
+%dfunc = @(v) polyval(polyder(poly),v);
+
 %% rootMapping
 
 for iter = 1:iters % perform Newton's method
@@ -25,9 +31,9 @@ for iter = 1:iters % perform Newton's method
 end
 
 for j = 1:powerN  % find which roots each point converges to
-    root = rts(j)*exp(j*2*pi*1i / powerN);
-    dif = j*(abs(z-root)<=tol);
-    rootMap = rootMap + dif;
+    root = rts(j); %.*exp(j*2*pi*1i / powerN);
+    where = j*(abs(z-root)<=tol);
+    rootMap = rootMap + where;
     
 end
 
@@ -46,13 +52,14 @@ for iter = 1:iters
     z(converged) = NaN;
     iterMap(converged) = iter;
     converged = converged .* 0;
+    
     % real time plotting
-    imagesc([-4 4],[-4 4], iterMap);
-    colormap(colors);
-    axis equal;
-    axis off;
-    colorbar;
-    drawnow;
+%     imagesc([-4 4],[-4 4], iterMap);
+%     colormap(colors);
+%     axis equal;
+%     axis off;
+%     colorbar;
+%     drawnow;
 end
 
 end
