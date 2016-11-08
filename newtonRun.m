@@ -3,10 +3,10 @@
 % images of Newton fractals for polynomials of the form: f(z) = z^n + c
 %
 
-
+close all;
 %% set grid and image parameters
 
-points = 800; % points = N, creates NxN grid
+points = 700; % points = N, creates NxN grid
 xcen = 0; ycen = 0; d = 1;  
 x = linspace(xcen-d,xcen+d,points);
 y = linspace(ycen-d,ycen+d,points);
@@ -15,18 +15,32 @@ z = x+1i.*y;
 
 %% set Newton's method parameters
 
-powerN = 3;      % polynomial degree
-iters = 16;      % use ~10-20 for iterMapping, and >35ish for rootMapping
+powerN = 4;      % polynomial degree
+iters = 20;      % use ~10-20 for iterMapping, and >35ish for rootMapping
 tol = 10^(-6);   % tolerance for convergence
-a = 1 - 0.2i;      % scaling constant for relaxation variant
-c = -3 + 0.5i;    % constant term in polynomial
+a = 1 + 0.4i;    % scaling constant for relaxation 0(stable inside disk of r=1, centered at 1)
+c = -1.0 + 0.0i;    % constant term in polynomial
 
 [rootMap, iterMap] = newtonGrid(powerN, c, iters, z, a, tol);
 
-%disp(kGrid);
+%disp(rootMap);
 %disp(iterMap);
 
 %% plotting
-close all;
-colors = jet.^1; % parula,jet,hsv,hot,cool,spring,summer,autumn,winter,gray,bone,copper,pink,lines,colorcube,prism,flag
-plotNewton(rootMap, iterMap, powerN, c, iters, a, colors);
+% parula,jet,hsv,hot,cool,spring,summer,autumn,winter,gray,bone,copper,pink,lines,colorcube,prism,flag
+
+type = 'iterMap';
+%type = 'rootMap';
+
+colors = max(iterMap(:));
+
+%newmap = copper(max(iterMap(:)));
+newmap = rand(max(iterMap(:)),3);
+%newmap=jet(colors).^3;
+indexOther = ceil(colors*.2);
+
+for i=1:3
+    newmap(1:indexOther+2,i) = linspace(0,newmap(indexOther,i),indexOther+2);
+end
+
+plotNewton(rootMap,iterMap,powerN,c,iters,a,newmap,type);

@@ -17,6 +17,7 @@ poly = zeros(1,powerN+1);
 poly(1) = 1; poly(end) = c;
 rts = roots(poly);
 
+%% rootMapping
 
 for iter = 1:iters % perform Newton's method
     z = z - a * (func(z)./dfunc(z));
@@ -26,12 +27,15 @@ for j = 1:powerN  % find which roots each point converges to
     root = rts(j)*exp(j*2*pi*1i / powerN);
     dif = j*(abs(z-root)<=tol);
     rootMap = rootMap + dif;
+    
 end
 
+%% iterMapping
+
 iterMap = zeros(size(z)); % # iterations for convergence
-colors = jet.^1;
 figure;
 hold on;
+colors = colorcube.^3;
 
 for iter = 1:iters
     prev = z;
@@ -41,16 +45,34 @@ for iter = 1:iters
     iterMap(converged) = iter;
     converged = converged .* 0;
     
+    imagesc([-4 4],[-4 4], iterMap);
+    colormap(colors);
+    axis equal;
+    axis off;
+    colorbar;
+    drawnow;
 end
 
 end
 
+% TODO - real time plotting
 
-% TODO - real time plotting 
-
-% imagesc([-4 4],[-4 4], iterMap);
+% figure;
+% hold on;
+% colors = jet.^1;
+% 
+% for iter = 1:iters
+%     prev = z;
+%     z = z - a * (func(z)./dfunc(z));
+%     converged = abs(z-prev) <= tol;
+%     z(converged) = NaN;
+%     iterMap(converged) = iter;
+%     converged = converged .* 0;
+%     imagesc([-4 4],[-4 4], iterMap);
 % colormap(colors);
 % axis equal;
 % axis off;
 % drawnow;
+% end
+% 
 % disp(iter);

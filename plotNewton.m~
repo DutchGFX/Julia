@@ -1,37 +1,55 @@
-function [] = plotNewton(kGrid,iterMap, powerN, c, iters, a, colors)
-%
-%
+function [] = plotNewton(rootMap,iterMap, powerN, c, iters, a, colors,type)
+% plotNewton.m
+% plots Newton fractals
+% parameters:
+%   rootMap- 
+%   iterMap
+%    
 
 
-fig(1) = figure('Name','Julia Sets','NumberTitle','off');
-imagesc([-4 4],[-4 4],kGrid);
-colormap(fig(1),colors) % parula,jet,hsv,hot,cool,spring,summer,autumn,winter,gray,bone,copper,pink,lines,colorcube,prism,flag
-titlee = sprintf('Newton Fractal of $Z^%g+C$ for $C = %.4f + %.4fi$ for %d iterations, a = %',powerN,real(c),imag(c),iters);
-title(titlee,'Interpreter','latex')
-colorbar;
-axis equal
-axis off
-%saveas(figure1,[pwd '\Julia Sets\figures\' sprintf('n=%g  %.4f+i%.4f',powerN,real(c),imag(c)) '.png']);
+if (strcmp(type,'iterMap'))
+    
+    fig(1) = figure('Name','Julia Sets','NumberTitle','off');
+    imagesc([-4 4],[-4 4], iterMap);
+    colormap(fig(1),colors) % parula,jet,hsv,hot,cool,spring,summer,autumn,winter,gray,bone,copper,pink,lines,colorcube,prism,flag
+    titlee = sprintf('Newton Fractal of $Z^%g+C$ for $C = %.4f + %.4fi$\n %d iterations, $a=%.4d+%.4di$ (Mapped by iterations)', ...
+    powerN,real(c),imag(c),iters,real(a),imag(a));
+    title(titlee,'Interpreter','latex')
+    colorbar;
+    axis equal;
+    axis off;
+    %set(gcf,'position',[20 50 1250 600])
+    hold on;
+    %saveas(figure1,[pwd '\Julia Sets\figures\' sprintf('n=%g  %.4f+i%.4f',powerN,real(c),imag(c)) '.png']);
 
-fig(2) = figure('Name','Julia Sets','NumberTitle','off');
-imagesc([-4 4],[-4 4], iterMap);
-colormap(fig(2),colors) % parula,jet,hsv,hot,cool,spring,summer,autumn,winter,gray,bone,copper,pink,lines,colorcube,prism,flag
-titlee = sprintf('Newton Fractal of $Z^%g+C$ for $C = %.4f + %.4fi$ for %d iterations',powerN,real(c),imag(c),iters);
-title(titlee,'Interpreter','latex')
-colorbar;
-axis equal
-axis off
+elseif (strcmp(type,'rootMap'))
 
-% grid = 10.*kGrid + iterMap;
-% 
+    fig(2) = figure('Name','Julia Sets','NumberTitle','off');
+    imagesc([-4 4],[-4 4],rootMap);
+    colormap(fig(2),colors) % parula,jet,hsv,hot,cool,spring,summer,autumn,winter,gray,bone,copper,pink,lines,colorcube,prism,flag
+    titlee = sprintf('Newton Fractal of $Z^%g+C$ for $C = %.4f + %.4fi$\n %d iterations, $a=%.4d+%.4di$ (Mapped by root)' ...
+    ,powerN,real(c),imag(c),iters,real(a),imag(a));
+    title(titlee,'Interpreter','latex')
+    colorbar;
+    axis equal
+    axis off;
+    %saveas(figure1,[pwd '\Julia Sets\figures\' sprintf('n=%g  %.4f+i%.4f',powerN,real(c),imag(c)) '.png']);
+end
+
+
+% attempted hybrid mapping
+% use some weighted combination of rootMap and iterMap
+
+% grid = 10.*rootMap + iterMap;
+
 % fig(3) = figure('Name','Julia Sets','NumberTitle','off');
 % imagesc([-4 4],[-4 4], grid);
 % colormap(fig(3),colors) % parula,jet,hsv,hot,cool,spring,summer,autumn,winter,gray,bone,copper,pink,lines,colorcube,prism,flag
 % titlee = sprintf('Newton Fractal of $Z^%g+C$ for $C = %.4f + %.4fi$ for %d iterations',powerN,real(c),imag(c),iters);
 % title(titlee,'Interpreter','latex')
 % colorbar;
-% axis equal
-% axis off
+% axis equal;
+% axis off;
 
 end
 
