@@ -15,11 +15,11 @@ z = x+1i.*y;
 
 %% set Newton's method parameters
 
-powerN = 5;      % polynomial degree
-iters = 40;      % use ~10-20 for iterMapping, and >35ish for rootMapping
+powerN = 4;      % polynomial degree
+iters = 30;      % use ~10-20 for iterMapping, and >35ish for rootMapping
 tol = 10^(-6);   % tolerance for convergence
-a = 1.0 + 0.0i;  % scaling constant for relaxation 0(stable inside disk of r=1, centered at 1)
-c = -1.0 + 0.0i;    % constant term in polynomial
+a = 1.0 + 0.5i;  % scaling constant for relaxation 0(stable inside disk of r=1, centered at 1)
+c = -1.4 + 0.2i;    % constant term in polynomial
 
 [rootMap, iterMap] = newtonGrid(powerN, c, iters, z, a, tol);
 

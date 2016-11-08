@@ -54,34 +54,12 @@ for iter = 1:iters
     converged = converged .* 0;
     
     % real time plotting
-%     imagesc([-4 4],[-4 4], iterMap);
-%     colormap(colors);
-%     axis equal;
-%     axis off;
-%     colorbar;
-%     drawnow;
+    imagesc([-4 4],[-4 4], iterMap);
+    colormap(colors);
+    axis equal;
+    axis off;
+    colorbar;
+    drawnow;
 end
 
 end
-
-% TODO - real time plotting
-
-% figure;
-% hold on;
-% colors = jet.^1;
-% 
-% for iter = 1:iters
-%     prev = z;
-%     z = z - a * (func(z)./dfunc(z));
-%     converged = abs(z-prev) <= tol;
-%     z(converged) = NaN;
-%     iterMap(converged) = iter;
-%     converged = converged .* 0;
-%     imagesc([-4 4],[-4 4], iterMap);
-% colormap(colors);
-% axis equal;
-% axis off;
-% drawnow;
-% end
-% 
-% disp(iter);
