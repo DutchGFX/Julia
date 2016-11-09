@@ -18,7 +18,7 @@ d=1;
 
 %% Function
 theseC = eval((sprintf('myGoodCValues%g',powerN)));
-c = theseC(2);
+c = theseC(4);
 func = @(v) v.^powerN+c;
 
 %% Grid
@@ -31,12 +31,14 @@ kGrid = zeros(size(x)); % will store k values: dark not diverging
 escapeRadius = nthroot(2,powerN-1); %largest the escape radius could be
 z = x+1i.*y;
 for iter=0:iters %changed to denote particles that are already escaped
-    z=func(z); % next iteration
     escaped = abs(z)>escapeRadius; % particles that left the circle this iter
     z(escaped) = NaN; % prevent further iterations
-    kGrid(escaped) = iter;    
+    kGrid(escaped) = iter;   
+    z=func(z); % next iteration
 end
 
+kGrid = genKGrid(func,points,iters,escapeRadius,d);
+plotKGrid(kGrid,'myImages\Ultra High Res',c,1, '')
 %% Plotting
 
 figure1 = figure('Name','Julia Sets','NumberTitle','off');
