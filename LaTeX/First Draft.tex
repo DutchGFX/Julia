@@ -199,7 +199,10 @@ Newton’s method is a root finding technique that is a special case of fixed po
 \caption{}
 \label{fig:rootEx2}
 \end{figure}
-To map by root, we applied Newton’s method for a given complex polynomial function to a set of points in the complex plane.  After a set number of iterations, we find the root where each point converges, by checking if the distance from the point to the root is less than some given tolerance.  After each point is labeled with a root, those roots are then mapped to a color, to form an image like the one seen above.   Each colored region depicts a basins of attraction, which is a set of points which all converge to the same root.  The boundaries of these regions are what define the fractal, and those points are part of the Julia set.  (more to come)
+The basins of attraction for Newton’s method are defined as the regions  for which all initial guesses will converge to a single root.  According to a result discovered by Arthur Cayley, if a complex quadratic polynomial has roots $\alpha$ and $\beta$, and $L$ is the perpendicular bisector of the line segment joining those roots, then the basins of attraction for which Newton’s method will converge to either $\alpha$ or $\beta$ are the half planes into which $L$ divides the complex plane.  This means that an initial approximation $z_{0}$ will only converge to $\alpha$ if $|z_{0} - \alpha| < |z_{0} - \beta|$.  If $z_{0}$ lies on $L$, then Newton’s method will not converge.  For polynomials of degree greater than two, the boundaries for the basins of attraction are not as clear.  By mapping the results of Newton’s method in the complex plane to the roots where each initial point converged, we can visualize the more complicated basins of attraction for higher degree polynomials. 
+
+To map by root, we applied Newton’s method for a given complex polynomial function to a set of points in the complex plane.  After a set number of iterations, we find the root where each point converges by checking if the distance from the point to the root is less than some given tolerance.  After each point is labeled with a root, those roots are then mapped to a color, to form an image like the one seen above.  Each colored region depicts a basin of attraction.  The boundaries of these regions never converge, similarly to the case of the quadratic polynomial.  The difference is that now these boundary points form a fractal that is a special case of a Julia set. 
+
 \subsubsection*{Mapping by iteration}
 \begin{figure}[H]
 	\centering
@@ -207,11 +210,30 @@ To map by root, we applied Newton’s method for a given complex polynomial func
 	\caption{}
 	\label{fig:rootEx2}
 \end{figure}
-To map by iteration, we proceed with Newton’s method.  After each iteration, we check if the distance moved by each point is less than a given tolerance, implying that it has converged.  If so, that point is labeled with the current iteration count, and removed from the set for all following iterations. (more to come)
+To map by iteration, we proceed with Newton’s method.  After each iteration, we check if the distance moved by each point is less than a given tolerance, implying that it has converged.  If so, that point is labeled with the current iteration count, and removed from the set for all following iterations. This method does not show which root to which a point converges, but it does show how long it takes for each point to converge.  This is useful for analyzing factors that may affect the rate of convergence for Newton’s method, namely roots with multiplicity greater than one. (a bit more detail to come)
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \end{onehalfspace}
 \pagebreak
 \normalsize
+
+\section*{References}
+
+\begin{list}
+\item\url{https://www.mcgoodwin.net/julia/juliajewels.html}
+\item\url{http://math.bu.edu/DYSYS/FRACGEOM/node4.html}
+\item\url{http://lodev.org/cgtutor/juliamandelbrot.html}
+\item\url{http://www.relativitybook.com/CoolStuff/julia_set.html
+\item\url{http://mrob.com/pub/muency/escaperadius.html}
+\item\url{http://www.dartmouth.edu/~michaeldowns/writeup.pdf}
+\item\url{https://www.whitman.edu/Documents/Academics/Mathematics/burton.pdf}
+\item\url{https://www.mitchr.me/SS/newton/#firstprogram}
+\item\url{http://www.chiark.greenend.org.uk/~sgtatham/newton}
+\item\url{http://atmos.eas.cornell.edu/~mek236/fractal}
+\item\url{http://young.physics.ucsc.edu/242/newton.pdf}
+
+\end{list}
+
 \section*{Appendix}
 \subsection*{Proof 1: Powers of Complex Numbers}
 \begin{center}
