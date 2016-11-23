@@ -22,7 +22,7 @@ if (strcmp(type,'iterMap') || strcmp(type,'both'))
     axis equal;
     axis off;
     hold on;
-    %saveas(figure1,[pwd '\Julia Sets\figures\' sprintf('n=%g  %.4f+i%.4f',powerN,real(c),imag(c)) '.png']);
+    %saveas(fig(1),[pwd '\Julia Sets\figures\' sprintf('n=%g  %.4f+i%.4f',powerN,real(c),imag(c)) '.png']);
 end
 
 if (strcmp(type,'rootMap') || strcmp(type,'both'))
@@ -35,7 +35,7 @@ if (strcmp(type,'rootMap') || strcmp(type,'both'))
     colorbar;
     axis equal
     axis off;
-    %saveas(figure1,[pwd '\Julia Sets\figures\' sprintf('n=%g  %.4f+i%.4f',powerN,real(c),imag(c)) '.png']);
+    %saveas(fig(2),[pwd '\Julia\figures\realTime\' sprintf('n=%g  %.4f+i%.4f',powerN,real(c),imag(c)) '.png']);
 end
 
 
