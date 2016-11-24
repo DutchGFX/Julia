@@ -7,12 +7,9 @@ close all
 %% Constants
 powerN = 4;
 iters = 30;
-xcen = 0;
-ycen = 0;
+points = 700; xcen = 0; ycen = 0; d=1;
 tol = 10^(-6);
-points = 700;
-cStep = .25;
-d=1;
+minc = -4; maxc = 4; cStep = .5;
 a = 1.0 + 0.0i;
 type = 'iterMap';
 %folder = 'N=4 Newton';
@@ -30,13 +27,13 @@ y = linspace(ycen-d,ycen+d,points);
 z = x+1i.*y;
 z = x + 1i.*y;
 
-for cReal=-1:cStep:1
-    for cImag=-1:cStep:1
+for cReal=3:cStep:maxc
+    for cImag=minc:cStep:maxc
         c = cReal + cImag*1i;
-
+        
         [rootMap,iterMap] = newtonGrid(powerN,c,iters,z,a,tol);
         
         plotNewton(rootMap,iterMap,powerN,c,iters,a,newmap,type);
-        drawnow;
+        %drawnow;
     end
 end

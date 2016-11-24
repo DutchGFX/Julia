@@ -139,7 +139,7 @@ When $c=0$, all points diverge except for the origin. The process above offers a
 When the imaginary component of $c$ is 0, there will be no vertical translation of D before the “rotation”, so the Julia set will be symmetric about the horizontal or real axis.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section*{Simple Polynomials}
-For polynomials of the form $f(Z)= Z^n+C$, the function was applied repeatedly to a grid of points in the complex plane centered at the origin. Before each iteration, each point was checked to see if it was outside of the escape radius. The escape radius is a radius beyond which points cannot possibly converge to a root. This is due to the fact that beyond the radius, each iteration takes the point further away from the origin, without bound. As a result, we know that all points outside of this radius won’t converge. The iteration at which points cross the radius is stored and used for plotting. The escape radius for these functions can be derived quite easily, as shown below\footnote{\url{http://mrob.com/pub/muency/escaperadius.html}}.
+For polynomials of the form $f(Z)= Z^n+C$, the function was applied repeatedly to a grid of points in the complex plane centered at the origin. Before each iteration, each point was checked to see if it was outside of the escape radius. The escape radius is a radius beyond which points cannot possibly converge to a root. This is due to the fact that beyond the radius, each iteration takes the point further away from the origin, without bound. As a result, we know that all points outside of this radius won’t converge. The iteration at which points cross the radius is stored and used for plotting. The escape radius for these functions can be derived quite easily, as shown below.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{onehalfspace}
 	Let $f(z)=z^n+C$
@@ -216,25 +216,23 @@ To map by iteration, we proceed with Newton’s method.  After each iteration, w
 \end{onehalfspace}
 \pagebreak
 \normalsize
-
+\begin{center}
+	\section*{Appendix}
+\end{center}
 \section*{References}
-
-\begin{list}
-\item\url{https://www.mcgoodwin.net/julia/juliajewels.html}
-\item\url{http://math.bu.edu/DYSYS/FRACGEOM/node4.html}
-\item\url{http://lodev.org/cgtutor/juliamandelbrot.html}
-\item\url{http://www.relativitybook.com/CoolStuff/julia_set.html
-\item\url{http://mrob.com/pub/muency/escaperadius.html}
-\item\url{http://www.dartmouth.edu/~michaeldowns/writeup.pdf}
-\item\url{https://www.whitman.edu/Documents/Academics/Mathematics/burton.pdf}
-\item\url{https://www.mitchr.me/SS/newton/#firstprogram}
-\item\url{http://www.chiark.greenend.org.uk/~sgtatham/newton}
-\item\url{http://atmos.eas.cornell.edu/~mek236/fractal}
-\item\url{http://young.physics.ucsc.edu/242/newton.pdf}
-
-\end{list}
-
-\section*{Appendix}
+\begin{itemize}
+	\item\url{https://www.mcgoodwin.net/julia/juliajewels.html}
+	\item\url{http://math.bu.edu/DYSYS/FRACGEOM/node4.html}
+	\item\url{http://lodev.org/cgtutor/juliamandelbrot.html}
+	\item\url{http://www.relativitybook.com/CoolStuff/julia_set.html}
+	\item\url{http://mrob.com/pub/muency/escaperadius.html}
+	\item\url{http://www.dartmouth.edu/~michaeldowns/writeup.pdf}
+	\item\url{https://www.whitman.edu/Documents/Academics/Mathematics/burton.pdf}
+	\item\url{https://www.mitchr.me/SS/newton/#firstprogram}
+	\item\url{http://www.chiark.greenend.org.uk/~sgtatham/newton}
+	\item\url{http://atmos.eas.cornell.edu/~mek236/fractal}
+	\item\url{http://young.physics.ucsc.edu/242/newton.pdf}
+\end{itemize}
 \subsection*{Proof 1: Powers of Complex Numbers}
 \begin{center}
 	Let $z= a + bi\hspace{10mm}|z|=r$\linebreak
