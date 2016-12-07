@@ -41,9 +41,17 @@ end
 
 z = tempz;
 iterMap = zeros(size(z)); % # iterations for convergence
-figure;
+fig = figure('Name','Newton Fractals','NumberTitle','off');
 hold on;
-colors = colorcube.^3;
+
+colors = iters;
+newmap = rand(iters,3);
+%newmap=jet(colors).^3;
+
+indexOther = ceil(colors*.2);
+for i=1:3
+    newmap(1:indexOther+2,i) = linspace(0,newmap(indexOther,i),indexOther+2);
+end
 
 for iter = 1:iters
     prev = z;
@@ -53,13 +61,15 @@ for iter = 1:iters
     iterMap(converged) = iter;
     converged = converged .* 0;
     
-    % real time plotting
-    imagesc([-4 4],[-4 4], iterMap);
-    colormap(colors);
-    axis equal;
-    axis off;
-    colorbar;
-    drawnow;
+    % real time plotting- uncomment to see real time plot at each iteration
+%     imagesc([-4 4],[-4 4], iterMap);
+%     colormap(newmap);
+%     axis equal;
+%     axis off;
+%     colorbar;
+%     drawnow;
+
+    %saveas(fig,[pwd '\figures\realTime\' sprintf('Newton Fractal, n=%g c=%.2f+%.2fi, iter=%d',powerN,real(c),imag(c),iter) '.png']);
 end
 
 end

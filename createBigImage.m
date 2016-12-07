@@ -4,7 +4,7 @@ function createBigImage(d,cStep,subfolder)
 location = mfilename('fullpath');
 filename = mfilename;
 location = location(1:end-length(filename));
-location=[location 'figures\' subfolder '\'];
+location=[location 'figures/' subfolder '/'];
 
 bigMatrix = 0;
 for cImag=-d:cStep:d
@@ -12,8 +12,8 @@ for cImag=-d:cStep:d
     for cReal=-d:cStep:d
         c = cReal + cImag*1i;
         % row
-        [curImage,curMap] = imread([location sprintf('%.4f+%.4fi.png',real(c),imag(c))]);
-        curImage = ind2rgb(curImage,curMap);
+        [curImage,curMap] = imread([location sprintf('n=4  %.2f+%.2fi.png',real(c),imag(c))]);
+        %curImage = ind2rgb(curImage,curMap);
         if (thisRow == 0)
             thisRow = curImage;
         else
@@ -28,6 +28,7 @@ for cImag=-d:cStep:d
 end
 
 imagesc(bigMatrix);
+title('');
 %colormap('copper');
 axis equal
 axis off
