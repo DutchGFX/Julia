@@ -9,10 +9,10 @@ powerN = 6;
 iters = 50;
 xcen = 0;
 ycen = 0;
-points = 2000;
-cStep = .1;
+points = 200;
+cStep = .05;
 d=1;
-folder = 'N=6 High Res';
+folder = 'N=6 Low Res';
 %% Function
 for cReal=-1:cStep:1
     for cImag=-1:cStep:1
